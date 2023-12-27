@@ -1,26 +1,16 @@
-def is_correct_equation(equation):
-    
-    elements = equation.split('=')
-
-    left_expression = elements[0].strip()
-    right_expression = elements[1].strip()
-
-    X, operator, Y = left_expression.split()
-    Z = right_expression
-
-    if operator == '+':
-        return int(X) + int(Y) == int(Z)
-    elif operator == '-':
-        return int(X) - int(Y) == int(Z)
-    else:
-        return False
-
 def solution(quiz):
+    
+    quiz_split = []
     result = []
-
-    for equation in quiz:
-        is_correct = is_correct_equation(equation)
-        result.append("O" if is_correct else "X")
-
+    
+    for i in quiz:
+        a = i.split("=")
+        quiz_split.append(a)
+    
+    for i in quiz_split:
+        if eval(i[0]) == int(i[1]):
+            result.append('O')
+        else:
+            result.append('X')
+            
     return result
-
